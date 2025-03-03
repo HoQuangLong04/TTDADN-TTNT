@@ -1,0 +1,191 @@
+{
+  "UserValidation": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["name", "passwordHash", "email", "phone", "createdAt", "role"],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId",
+            "description": "ID phải là ObjectId"
+          },
+          "name": {
+            "bsonType": "string",
+            "minLength": 3,
+            "maxLength": 50,
+            "description": "Tên phải là chuỗi có độ dài từ 3 đến 50 ký tự"
+          },
+          "passwordHash": {
+            "bsonType": "string",
+            "minLength": 8,
+            "description": "Mật khẩu đã hash phải có ít nhất 8 ký tự"
+          },
+          "email": {
+            "bsonType": "string",
+            "pattern": "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$",
+            "description": "Email phải đúng định dạng"
+          },
+          "phone": {
+            "bsonType": "string",
+            "pattern": "^[0-9]{9,15}$",
+            "description": "Số điện thoại phải chứa từ 9 đến 15 chữ số"
+          },
+          "createdAt": {
+            "bsonType": "date",
+            "description": "Thời gian tạo phải là kiểu ngày hợp lệ"
+          },
+          "role": {
+            "bsonType": "string",
+            "enum": ["user", "admin"],
+            "description": "Vai trò chỉ được là 'user' hoặc 'admin'"
+          }
+        }
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  },
+  "DeviceValidation": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["type", "status"],
+        "properties": {
+          "type": {
+            "bsonType": "string",
+            "enum": ["camera", "servo", "fan", "mic"],
+            "description": "Type of the device must be a string and is required"
+          },
+          "status": {
+            "bsonType": "string",
+            "enum": ["Active", "Inactive"],
+            "description": "Status must be either 'Active' or 'Inactive'"
+          }
+        }
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  },
+  "InteractsValidation": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["userId", "deviceId"],
+        "properties": {
+          "userId": {
+            "bsonType": "string",
+            "description": "UserID phải là ObjectId hợp lệ và tồn tại trong User"
+          },
+          "deviceId": {
+            "bsonType": "string",
+            "description": "DeviceID phải là ObjectId hợp lệ và tồn tại trong Device"
+          }
+        }
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  },
+  "FaceDataValidation": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["createdDate", "imagePath", "userID"],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId",
+            "description": "ID phải là ObjectId"
+          },
+          "createdDate": {
+            "bsonType": "date",
+            "description": "Ngày tạo phải là kiểu Date"
+          },
+          "imagePath": {
+            "bsonType": "string",
+            "minLength": 5,
+            "description": "Đường dẫn ảnh phải là chuỗi hợp lệ"
+          },
+          "userID": {
+            "bsonType": "string",
+            "description": "userID phải là ObjectId hợp lệ"
+          }
+        }
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  },
+  "NotificationsValidation": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["userID", "timestamp", "message", "imageCaptured"],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId",
+            "description": "ID phải là ObjectId hợp lệ"
+          },
+          "userID": {
+            "bsonType": "string",
+            "description": "userID phải là ObjectId hợp lệ và tham chiếu đến User"
+          },
+          "timestamp": {
+            "bsonType": "date",
+            "description": "Thời gian phải là kiểu Date hợp lệ"
+          },
+          "message": {
+            "bsonType": "string",
+            "minLength": 5,
+            "description": "Tin nhắn phải là chuỗi có ít nhất 5 ký tự"
+          },
+          "imageCaptured": {
+            "bsonType": "string",
+            "minLength": 5,
+            "description": "Đường dẫn ảnh phải là chuỗi hợp lệ"
+          }
+        }
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  },
+  "AuthenticationLogValidation": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["result", "timestamp", "imagePath", "userID", "deviceID"],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId",
+            "description": "ID phải là ObjectId hợp lệ"
+          },
+          "result": {
+            "bsonType": "string",
+            "enum": ["Success", "Failure"],
+            "description": "Kết quả xác thực chỉ có thể là 'Success' hoặc 'Failure'"
+          },
+          "timestamp": {
+            "bsonType": "date",
+            "description": "Thời gian phải là kiểu Date hợp lệ"
+          },
+          "imagePath": {
+            "bsonType": "string",
+            "minLength": 5,
+            "description": "Đường dẫn ảnh phải là chuỗi hợp lệ"
+          },
+          "userID": {
+            "bsonType": "string",
+            "description": "userID phải là ObjectId hợp lệ"
+          },
+          "deviceID": {
+            "bsonType": "string",
+            "description": "deviceID phải là ObjectId hợp lệ"
+          }
+        }
+      }
+    },
+    "validationLevel": "strict",
+    "validationAction": "error"
+  }
+}

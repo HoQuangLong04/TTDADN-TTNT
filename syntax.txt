@@ -1,0 +1,7 @@
+{ field: value }	Tìm chính xác
+{ field: { $gt: value } }	Lớn hơn
+{ field: { $lt: value } }	Nhỏ hơn
+{ field: { $in: [value1, value2] } }	Một trong những giá trị này
+{ field: { $ne: value } }	Không bằng giá trị này
+{ $or: [{ field1: value1 }, { field2: value2 }] }	Hoặc
+{ field: /regex/ }	Tìm kiếm bằng regex
