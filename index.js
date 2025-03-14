@@ -12,10 +12,14 @@ const adminRoute = require('./routes/admin/index.route');
 const smart_door_Route = require('./routes/smart_door/index.route');
 const voice_recognition_system_Router = require('./routes/voice_recognition_system/index.route')
 
+const sensorRoute = require('./routes/sensor/index.route');
+const environmentRoute = require('./routes/environmentdata/index.route');
+
 const app = express();
 const port = process.env.PORT;
 const mqttService = require('./services/mqqtService');
 
+const sensorService = require('./services/sensorService');
 
 database.connect();
 
@@ -28,7 +32,11 @@ adminRoute(app);
 smart_door_Route(app);
 voice_recognition_system_Router(app);
 
+sensorRoute(app);
+environmentRoute(app);
+
 mqttService.initMQTT();
+sensorService.initMQTT();
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
