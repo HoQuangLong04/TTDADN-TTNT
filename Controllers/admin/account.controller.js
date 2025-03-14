@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { Admin } = require('../../models/account.model'); // Điều chỉnh đường dẫn cho phù hợp
+const { Admin } = require('../../models/account.model'); 
 
 // const create_admin_account = async (req, res) => {
 //   try {

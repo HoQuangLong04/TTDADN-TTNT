@@ -14,20 +14,21 @@ const voice_recognition_system_Router = require('./routes/voice_recognition_syst
 
 const app = express();
 const port = process.env.PORT;
+const mqttService = require('./services/mqqtService');
 
-// Conect DB
+
 database.connect();
 
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// // Import routes 
 clientRoute(app);
 adminRoute(app);
 smart_door_Route(app);
 voice_recognition_system_Router(app);
 
+mqttService.initMQTT();
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
