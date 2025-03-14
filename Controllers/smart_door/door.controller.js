@@ -1,5 +1,6 @@
 const Door = require('../../models/smart_door.model');
 const DoorHistory = require('../../models/smart_door_history');
+const DoorData = require('../../models/smart_door_data.model');
 
 
 const setDoorPassword = async (req, res) => {
@@ -76,7 +77,6 @@ const accessDoor = async (req, res) => {
 
       res.status(200).json({ message: 'Cửa đã mở!', door });
     } else {
-      // Mật khẩu sai: không mở cửa
       const doorHistory = new DoorHistory({
         door: door._id,
         action: 'failed',
@@ -91,8 +91,31 @@ const accessDoor = async (req, res) => {
   }
 };
 
+
+
+const getdoorData = async (value) => {
+  try {
+    let status;
+    if (value === '1') {
+      status = true;
+    } else if (value === '0') {
+      status = false;
+    } else {
+      throw new Error(`Giá trị không hợp lệ: ${value}. Chỉ chấp nhận '1' hoặc '0'.`);
+    }
+    const newRecord = new DoorData({ status });
+    await newRecord.save();
+
+    console.log('Đã lưu trạng thái cửa:', newRecord);
+  } catch (error) {
+    console.error('Lỗi khi cập nhật trạng thái cửa:', error);
+  }
+};
+
 module.exports = {
     setDoorPassword,
     accessDoor,
-    changeDoorPassword 
+    changeDoorPassword,
+    getdoorData,
+    
 };

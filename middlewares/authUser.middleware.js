@@ -1,3 +1,4 @@
+// yêu cầu người dùng phải đăng nhập thì mới được dùng các chức năng
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 

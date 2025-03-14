@@ -1,3 +1,4 @@
+// dùng để xác định xem người dùng có phải là admin koko
 const authorizeRoles = (requiredRole = "admin") => {
     return (req, res, next) => {
         if (req.user.role !== requiredRole) {
