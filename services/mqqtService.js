@@ -4,10 +4,8 @@ const doorDataController = require('../Controllers/smart_door/door.controller');
 
 const MQTT_BROKER_URL = 'mqtts://io.adafruit.com';
 const options = {
-  // username: '...........', // chỗ này thì thay bằng tên
-  // password: '...........',  // Chỗ này thay bằng API KEY của mình 
-  // username: 'David030204',
-  // password: '...........',
+  username: process.env.USER_NAME_ADAFRUIT,
+  password:  process.env.APIKEY_ADAFRUIT, 
 };
 
 function initMQTT() {
