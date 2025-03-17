@@ -21,6 +21,11 @@ const mqttService = require('./services/mqqtService');
 
 const sensorService = require('./services/sensorService');
 
+
+const swaggerUi = require('swagger-ui-express');
+const yamljs = require('yamljs');
+const swaggerDocument = yamljs.load(path.resolve(__dirname, 'swagger.yaml'));
+
 database.connect();
 
 app.use(cookieParser());
@@ -37,6 +42,9 @@ environmentRoute(app);
 
 mqttService.initMQTT();
 sensorService.initMQTT();
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);

@@ -1,0 +1,87 @@
+# swagger.yaml
+openapi: 3.0.0
+info:
+  title: API Documentation
+  version: 1.0.0
+  description: API documentation for Smart house 
+
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+
+
+paths:
+  /member/register:
+    post:
+      summary: Đăng ký thành viên mới
+      description: Đăng ký thành viên mới với các thông tin cá nhân.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullname:
+                  type: string
+                  example: "Nguyễn Văn A"
+                email:
+                  type: string
+                  format: email
+                  example: "nguyenvana@example.com"
+                phone:
+                  type: string
+                  example: "0123456789"
+                password:
+                  type: string
+                  format: password
+                  example: "secretpassword"
+              required:
+                - fullname
+                - email
+                - phone
+                - password
+      responses:
+        "201":
+          description: Đăng ký thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Đăng ký thành công!"
+                  member:
+                    type: object
+                    properties:
+                      fullname:
+                        type: string
+                        example: "Nguyễn Văn A"
+                      email:
+                        type: string
+                        example: "nguyenvana@example.com"
+                      role:
+                        type: string
+                        example: "user"
+        "400":
+          description: Thiếu thông tin hoặc email đã được sử dụng
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Vui lòng nhập đầy đủ thông tin."
+        "500":
+          description: Lỗi máy chủ khi đăng ký
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Đăng ký thất bại!"
