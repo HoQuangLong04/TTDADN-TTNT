@@ -7,10 +7,12 @@ const MQTT_BROKER_URL = 'mqtts://io.adafruit.com';
 const options = {
   // username: 'HQL04',
   // password: '....................',
+  username: process.env.USER_NAME_ADAFRUIT,
+  password:  process.env.APIKEY_ADAFRUIT, 
 };
 
 function initMQTT() {
-  const client = mqtt.connect(MQTT_BROKER_URL, options);
+  const client = mqtt.connect(MQTT_BROKER_URL, options);  
 
   client.on('connect', () => {
     console.log('Kết nối tới Adafruit IO MQTT Broker thành công!');
