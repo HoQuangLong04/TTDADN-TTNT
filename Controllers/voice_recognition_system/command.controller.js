@@ -3,15 +3,40 @@ const stringSimilarity = require("string-similarity");
 const mqttService = require("../../services/mqqtService");
 
 
+// const addCommand = async (req, res) => {
+//   try {
+//     const { commandText } = req.body;
+    
+//     if (!commandText) {
+//       return res.status(400).json({ message: "Vui lòng cung cấp nội dung câu lệnh." });
+//     }
+//     const newCommand = new Command({ commandText });
+//     await newCommand.save();
+//     res.status(201).json({
+//       message: "Thêm câu lệnh thành công!",
+//       command: newCommand
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       message: "Lỗi khi thêm câu lệnh.",
+//       error: error.message
+//     });
+//   }
+// };
+
+
+
 const addCommand = async (req, res) => {
   try {
-    const { commandText } = req.body;
-    
-    if (!commandText) {
-      return res.status(400).json({ message: "Vui lòng cung cấp nội dung câu lệnh." });
+    const { commandText, feed, payload } = req.body;
+
+    if (!commandText || !feed || !payload) {
+      return res.status(400).json({ message: "Thiếu thông tin." });
     }
-    const newCommand = new Command({ commandText });
+
+    const newCommand = new Command({ commandText, feed, payload });
     await newCommand.save();
+
     res.status(201).json({
       message: "Thêm câu lệnh thành công!",
       command: newCommand
@@ -23,6 +48,7 @@ const addCommand = async (req, res) => {
     });
   }
 };
+
 
 const getCommands = async (req, res) => {
   try {

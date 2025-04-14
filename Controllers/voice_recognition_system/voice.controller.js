@@ -43,8 +43,8 @@ exports.handleTranscript = async (transcript) => {
     
       console.log(`Identified command: ${bestMatch.command.commandText} (similarity: ${bestMatch.similarity})`);
       
-      let payload = null;
-      const action = bestMatch.command.commandText.toLowerCase();
+      // let payload = null;
+      // const action = bestMatch.command.commandText.toLowerCase();
       
       // switch (action) {
       //   case 'mở đèn':
@@ -62,35 +62,47 @@ exports.handleTranscript = async (transcript) => {
       //   mqttService.publishCommandLed(payload);
       //   console.log("Payload published:", payload);
       // }
-      switch (action) {
-      case 'mở đèn':
-        payload = '1';
-        publish = mqttService.publishCommandLed;
-        break;
-      case 'tắt đèn':
-        payload = '0';
-        publish = mqttService.publishCommandLed;
-        break;
-      case 'mở quạt':
-        payload = '1';
-        publish = mqttService.publishCommandFan;
-        break;
-      case 'tắt quạt':
-        payload = '0';
-        publish = mqttService.publishCommandFan;
-        break;
-      default:
-        console.log("Command action not mapped to any payload.");
-        break;
-    }
+      //   switch (action) {
+      //   case 'mở đèn':
+      //     payload = '1';
+      //     publish = mqttService.publishCommandLed;
+      //     break;
+      //   case 'tắt đèn':
+      //     payload = '0';
+      //     publish = mqttService.publishCommandLed;
+      //     break;
+      //   case 'mở quạt':
+      //     payload = '1';
+      //     publish = mqttService.publishCommandFan;
+      //     break;
+      //   case 'tắt quạt':
+      //     payload = '0';
+      //     publish = mqttService.publishCommandFan;
+      //     break;
+      //   default:
+      //     console.log("Command action not mapped to any payload.");
+      //     break;
+      // }
 
-    if (payload !== null) {
-      publish(payload);
-      console.log("Payload published:", payload);
-    }
+      // if (payload !== null) {
+      //   publish(payload);
+      //   console.log("Payload published:", payload);
+      // }
 
-    } else {
-      console.log("No matching command found.");
+      // } else {
+      //   console.log("No matching command found.");
+      // }
+      
+
+      const feed = bestMatch.command.feed;
+      const payload = bestMatch.command.payload;
+
+      if (feed && payload) {
+        mqttService.publishToFeed(feed, payload);
+        console.log(`Gửi đến feed ${feed} với payload ${payload}`);
+      } else {
+        console.log("Command không có feed hoặc payload.");
+      }
     }
   } catch (err) {
     console.error("Error in handleTranscript:", err);
