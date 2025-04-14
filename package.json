@@ -12,13 +12,19 @@
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.7",
+    "deepspeech": "^0.9.3",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
+    "mic": "^2.1.2",
     "mongodb": "^6.14.2",
     "mongoose": "^8.12.1",
     "mqtt": "^5.10.4",
+    "node-record-lpcm16": "^1.0.1",
+    "socket.io-client": "^4.8.1",
+    "string-similarity": "^4.0.4",
     "swagger-ui-express": "^5.0.1",
+    "vosk": "^0.3.39",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
