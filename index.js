@@ -14,7 +14,7 @@ const voice_recognition_system_Router = require('./routes/voice_recognition_syst
 
 const sensorRoute = require('./routes/sensor/index.route');
 const environmentRoute = require('./routes/environmentdata/index.route');
-
+//const voskService = require('./services/voskService');
 const app = express();
 const port = process.env.PORT;
 const mqttService = require('./services/mqqtService');
@@ -39,7 +39,7 @@ voice_recognition_system_Router(app);
 
 sensorRoute(app);
 environmentRoute(app);
-
+// voskService.startListening();
 mqttService.initMQTT();
 sensorService.initMQTT();
 
