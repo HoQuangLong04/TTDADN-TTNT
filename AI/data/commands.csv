@@ -24,3 +24,12 @@ tắt quạt,quạt dừng,1
 tắt quạt,bật quạt,0
 mở đèn,bật quạt,0
 tắt đèn,tắt quạt,0
+cho quạt yếu lại, bật quạt,0
+cho quạt yếu lại, tắt quạt,0
+cho quạt mạnh lên, bật quạt,0
+cho quạt mạnh lên, tắt quạt,0
+giảm tốc độ quạt, cho quạt yếu lại,1
+tăng tốc độ quạt, cho quạt manh lên,1
+giảm tốc độ quạt, tăng tốc độ quạt,0
+cho quạt yếu lại, giảm tốc độ quạt,1
+cho quạt yếu lại, bật đèn,0

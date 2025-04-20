@@ -31,16 +31,16 @@ const commandSchema = new mongoose.Schema({
   payload: { 
     type: String,
     required: true,
-    enum: ['0', '1'], 
+    enum: ['0', '1', '10', '20', '30', '40'], 
     message: '{VALUE} không hợp lệ'
   },
 
-  // actionTye: {
-  //   type: String,
-  //   enum: ["onoff", "increase", "decrease"],
-  //   default: "onoff",
-  //   require: true
-  // },
+  actionType: {
+    type: String,
+    enum: ["onoff", "increase", "decrease"],
+    default: "onoff",
+    require: true
+  },
 
   createdAt: { 
     type: Date, 

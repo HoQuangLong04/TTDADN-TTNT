@@ -72,6 +72,10 @@ const ADAFRUIT_USERNAME = process.env.USER_NAME_ADAFRUIT || 'YOUR_ADAFRUIT_USERN
 const ADAFRUIT_IO_KEY = process.env.APIKEY_ADAFRUIT || 'YOUR_ADAFRUIT_IO_KEY';
 const MQTT_BROKER_URL = 'mqtts://io.adafruit.com';
 
+
+
+
+
 const client = mqtt.connect(MQTT_BROKER_URL, {
   username: ADAFRUIT_USERNAME,
   password: ADAFRUIT_IO_KEY

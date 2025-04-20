@@ -70,7 +70,7 @@ def main():
     model_dir = 'models/command-matching-model'
     # Nếu thư mục model tồn tại, xóa để train mới hoàn toàn
     if os.path.exists(model_dir):
-        print(f"🔄 Removing existing model directory: {model_dir}")
+        print(f"Removing existing model directory: {model_dir}")
         shutil.rmtree(model_dir)
     # Tạo lại thư mục lưu model
     os.makedirs(model_dir, exist_ok=True)
@@ -88,7 +88,7 @@ def main():
     train_loss.model = model
 
     # Huấn luyện
-    print("🚀 Starting training...")
+    print("Starting training...")
     model.fit(
         train_objectives=[(train_dataloader, train_loss)],
         epochs=5,
