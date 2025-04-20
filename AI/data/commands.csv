@@ -1,0 +1,26 @@
+text1,text2,label
+bật đèn, bật đèn,1
+mở đèn, mở đèn,1
+mở đèn,bật đèn,1
+mở đèn,đèn sáng,1
+mở đèn, bật đèn lên,1
+mở đèn,đèn sáng lên,1
+mở đèn,cho tôi ánh sáng,1
+bật đèn, bật đèn lên,1
+bật đèn,mở đèn,1
+bật đèn lên, bật đèn,1
+bật đèn,đèn lên đi,1
+bật đèn,tắt đèn,0
+tắt đèn,ngắt đèn,1
+tắt đèn,đèn tắt,1
+tắt đèn,mở đèn,0
+bật quạt,mở quạt,1
+bật quạt,quạt bật lên,1
+bật quạt,quạt chạy,1
+bật quạt,quạt quay,1
+mở quạt,bật quạt,1
+tắt quạt,ngắt quạt,1
+tắt quạt,quạt dừng,1
+tắt quạt,bật quạt,0
+mở đèn,bật quạt,0
+tắt đèn,tắt quạt,0

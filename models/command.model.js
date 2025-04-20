@@ -34,6 +34,14 @@ const commandSchema = new mongoose.Schema({
     enum: ['0', '1'], 
     message: '{VALUE} không hợp lệ'
   },
+
+  // actionTye: {
+  //   type: String,
+  //   enum: ["onoff", "increase", "decrease"],
+  //   default: "onoff",
+  //   require: true
+  // },
+
   createdAt: { 
     type: Date, 
     default: Date.now 
