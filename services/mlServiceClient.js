@@ -1,16 +1,3 @@
-// const axios = require('axios');
-
-// const ML_SERVICE_URL = process.env.ML_SERVICE_URL || 'http://localhost:8000';
-
-// async function getSimilarities(transcript, cmdTexts) {
-//   const response = await axios.post(
-//     `${ML_SERVICE_URL}/similarity`,
-//     { transcript, commands: cmdTexts }
-//   );
-//   return response.data.similarities;
-// }
-
-// module.exports = { getSimilarities };
 
 const axios = require('axios');
 const ML_SERVICE_URL = process.env.ML_SERVICE_URL || 'http://localhost:8000';

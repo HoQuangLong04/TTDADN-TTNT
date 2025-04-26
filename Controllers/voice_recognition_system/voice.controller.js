@@ -50,20 +50,17 @@ exports.handleTranscript = async (transcript) => {
       console.error("Transcript is missing or not a string.");
       return;
     }
-
     //  Lấy danh sách commands từ database
     const commands = await commandController.getCommandsFromDB();
     if (!commands || commands.length === 0) {
       console.error("Cannot find any commands in database.");
       return;
     }
-
     // Đưa đọan script nhận đc về chữ thường và xóa khaongr trắng ở hai đầuđầu 
     let remainingText = transcript.toLowerCase().trim();
     // hai câu mà có tỷ lệ lớn hơn cái này thì đc tính là giống nhau 
     const THRESHOLD = 0.6;
     let anyMatched = false;
-
     // Lấy tất cả câu lệnh và dò qua cả câu để tìm 
     while (true) {
       const words = remainingText.split(/\s+/);

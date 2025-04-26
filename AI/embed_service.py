@@ -19,10 +19,10 @@ class SimilarityRequest(BaseModel):
 # API 
 @app.post('/similarity')
 async def similarity(req: SimilarityRequest):
-  
     # print(f">>> Similarity request - transcript: {req.transcript}, commands: {req.commands}")
     
-    # Ở đây kiểu như nó sẽ tạo vecto cho câu lệnh và câu nói mà nó nhận đc thông qua cái nhận diện giọng nói, 
+    # Ở đây kiểu như nó sẽ tạo vecto cho câu lệnh (biến chữ trong câu lệnh thành vecto số) và câu nói mà nó nhận đc 
+    # thông qua cái nhận diện giọng nói, 
     # sau đó, nó sẽ tính tỉ lệ giống nhau giữa 2 câu dựa trên góc của hai vecto này, càng gần 1 thì càng giống và ngược lại với 0.
     emb_trans = model.encode(req.transcript, convert_to_tensor=True)
     embs_cmds = model.encode(req.commands, convert_to_tensor=True)

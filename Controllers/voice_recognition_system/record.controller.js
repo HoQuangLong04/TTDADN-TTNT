@@ -5,13 +5,15 @@ dotenv.config()
 
 exports.startRecording = (req, res) => {
   
+
+  // Đường dẫn tới PythonPython
   const pythonExe = process.env.PYTHON_PATH;
 
   // Đường dẫn tới file mic_stream
   const script = process.env.SCRIPT_PATH;
 
 
-
+  // Chạy  file script 
   const py = spawn(pythonExe, [script]);
 
   let output = "";
@@ -41,6 +43,7 @@ exports.startRecording = (req, res) => {
       return res.json({ transcript: null, error: result.error || "No transcript" });
     }
 
+    // gọi đến file voice.controller 
     voiceController.handleTranscript(transcript)
       .then(() => {
         res.json({ transcript, message: "OK" });

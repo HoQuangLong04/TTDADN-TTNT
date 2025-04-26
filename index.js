@@ -50,16 +50,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 
+
+// Đoạn này nó đang khởi động 1 dịch vụ Python trên background khi chương trình chạy (chạy nầm cái fastapifastapi)
 const pythonExe = process.env.PYTHON_PATH;
-
-
 // đường dẫn tới file embed_service.py
 const mlScript = process.env.ML_SCRIPT_PATH;
-
-
-
-
-
 const ML_PORT = 8000;
 async function startMLService() {
   if (!fs.existsSync(mlScript)) {
@@ -85,11 +80,13 @@ async function startMLService() {
     process.exit(1);
   }
 }
-
 startMLService(); 
 
 app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
+
+  // API doc 
+   console.log(`API Docs (Swagger) available at: http://localhost:${port}/api-docs`);
 })
 
 

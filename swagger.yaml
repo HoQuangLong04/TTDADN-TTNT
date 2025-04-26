@@ -6,7 +6,7 @@ info:
   description: |
     API documentation for Smart house. 
     
-    [Collection Postman](https://www.postman.com/dacnpm-5156/workspace/smart-home/collection/33929895-5b0acec5-4df0-48a4-b56e-9561319f3aa5?action=share&creator=33929895)
+    [Collection Postman](https://www.postman.com/dacnpm-5156/workspace/smart-home/request/33929895-d064145f-2819-4285-8321-5f812c4e8690?action=share&creator=33929895&ctx=documentation)
 
 servers:
   - url: http://localhost:3000
