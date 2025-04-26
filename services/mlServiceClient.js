@@ -25,13 +25,18 @@ const ML_SERVICE_URL = process.env.ML_SERVICE_URL || 'http://localhost:8000';
  */
 async function getSimilarities(transcript, commands) {
   try {
-    console.log("🧪 Gọi ML_SERVICE_URL:", ML_SERVICE_URL);
+    // console.log("🧪 Gọi ML_SERVICE_URL:", ML_SERVICE_URL);
 
+    // const { data } = await axios.post(
+    //   `${ML_SERVICE_URL}/similarity`,
+    //   { transcript, commands }
+
+    // );
     const { data } = await axios.post(
       `${ML_SERVICE_URL}/similarity`,
       { transcript, commands }
-
     );
+
     return Array.isArray(data.similarities) ? data.similarities : [];
   } catch (err) {
     console.error('Error calling ML service:', err.message);

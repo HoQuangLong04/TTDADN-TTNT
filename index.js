@@ -49,64 +49,44 @@ sensorService.initMQTT();
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
-// // Đường dẫn tuyệt đối đến Python và script
-// const pythonExe = "C:/Users/ACER/AppData/Local/Programs/Python/Python312/python.exe";
-// const mlScript = "D:/Code_2025/Do_an_Tong_hop/Smart_home/AI/embed_service.py";
 
-// // Kiểm tra file script tồn tại
-// if (!fs.existsS3030ync(mlScript)) {
-//   console.error('❌ Python script not found at:', mlScript);
-//   process.exit(1);
-// }
-
-// // Khởi động ML service ngầm
-// const mlProcess = spawn(pythonExe, [mlScript], {
-//   cwd: path.dirname(mlScript),
-//   detached: true,
-//   stdio: ['ignore',  process.stdout, process.stderr]
-// });
-// mlProcess.unref();
-// console.log('🚀 ML service started in background');
+const pythonExe = process.env.PYTHON_PATH;
 
 
-const pythonExe = "C:/Users/ACER/AppData/Local/Programs/Python/Python312/python.exe";
-const mlScript = "D:/Code_2025/Do_an_Tong_hop/Smart_home/AI/embed_service.py";
+// đường dẫn tới file embed_service.py
+const mlScript = process.env.ML_SCRIPT_PATH;
+
+
+
+
+
 const ML_PORT = 8000;
-
-// Start FastAPI
 async function startMLService() {
   if (!fs.existsSync(mlScript)) {
-    console.error('❌ Python script not found at:', mlScript);
+    console.error('Python script not found at:', mlScript);  
     process.exit(1);
   }
   const mlProcess = spawn(pythonExe, [mlScript], {
     cwd: path.dirname(mlScript),
     stdio: 'inherit',
     env: {
-      ...process.env,       // giữ các biến môi trường hiện có
-      PORT: '8000'          // ép ML service dùng PORT riêng biệt
+      ...process.env,       
+      PORT: '8000'         
     }
   });
-  // const mlProcess = spawn(pythonExe, [mlScript], {
-  //   cwd: path.dirname(mlScript),
-  //   stdio: 'inherit' 
-  //   // detached: true,
-  //   // stdio: ['ignore', 'inherit', 'inherit']
-  // });
   mlProcess.unref();
-  console.log('🚀 ML service started in background');
-
-  console.log('⏳ Waiting for ML service to be ready...');
+  console.log('ML service started in background');
+  console.log('Waiting for ML service to be ready...');
   const portOpen = await waitPort({ host: 'localhost', port: ML_PORT, timeout: 30000 });
   if (portOpen) {
-    console.log('✅ ML service is ready!');
+    console.log('ML service is ready!');
   } else {
-    console.error('❌ ML service failed to start.');
+    console.error('ML service failed to start.');
     process.exit(1);
   }
 }
 
-startMLService(); // Gọi ở đầu chương trình
+startMLService(); 
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);

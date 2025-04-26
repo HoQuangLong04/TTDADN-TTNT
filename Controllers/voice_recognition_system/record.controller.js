@@ -1,9 +1,16 @@
 const { spawn } = require('child_process');
 const voiceController = require('./voice.controller');
+const dotenv = require('dotenv');
+dotenv.config()
 
 exports.startRecording = (req, res) => {
-  const pythonExe = "C:/Users/ACER/AppData/Local/Programs/Python/Python312/python.exe";
-  const script    = "D:/Code_2025/Do_an_Tong_hop/Smart_home/mic_stream.py";
+  
+  const pythonExe = process.env.PYTHON_PATH;
+
+  // Đường dẫn tới file mic_stream
+  const script = process.env.SCRIPT_PATH;
+
+
 
   const py = spawn(pythonExe, [script]);
 

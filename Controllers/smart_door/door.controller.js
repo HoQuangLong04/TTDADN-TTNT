@@ -48,7 +48,7 @@ const changeDoorPassword = async (req, res) => {
     res.status(500).json({ message: 'Lỗi khi thay đổi mật khẩu cho cửa.', error: error.message });
   }
 };
-
+  
 
 const accessDoor = async (req, res) => {
   try {

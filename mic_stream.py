@@ -8,12 +8,13 @@ r = sr.Recognizer()
 with sr.Microphone() as source:
     print("Hiệu chuẩn môi trường 1 giây...", file=sys.stderr)
     r.adjust_for_ambient_noise(source, duration=1)
-    print("Đang ghi âm trong 5 giây...", file=sys.stderr)
+    print("Đang ghi âm...", file=sys.stderr)
     try:
-        audio = r.listen(source, timeout=3, phrase_time_limit=7)
+        audio = r.listen(source, timeout=5, phrase_time_limit=8)
     except sr.WaitTimeoutError:
         print(json.dumps({"error": "Không nghe bạn nói gì."}))
         sys.exit(0)
+
 
 try:
     text = r.recognize_google(audio, language='vi-VN')

@@ -3,7 +3,10 @@ openapi: 3.0.0
 info:
   title: API Documentation
   version: 1.0.0
-  description: API documentation for Smart house 
+  description: |
+    API documentation for Smart house. 
+    
+    [Collection Postman](https://www.postman.com/dacnpm-5156/workspace/smart-home/collection/33929895-5b0acec5-4df0-48a4-b56e-9561319f3aa5?action=share&creator=33929895)
 
 servers:
   - url: http://localhost:3000
@@ -85,3 +88,146 @@ paths:
                   message:
                     type: string
                     example: "Đăng ký thất bại!"
+
+  /voice_recognition_system/add_command:
+    post:
+      summary: Thêm câu lệnh điều khiển thiết bị
+      description: Thêm một câu lệnh mới dùng cho hệ thống nhận diện giọng nói.
+      security:
+        - bearerAuth: []  # Nếu API cần token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commandText:
+                  type: string
+                  example: "Bật đèn phòng khách"
+                feed:
+                  type: string
+                  enum: ["DAT_LED", "DAT_FAN"]
+                  example: "DAT_LED"
+                payload:
+                  type: string
+                  enum: ["0", "1", "10", "20", "30", "40"]
+                  example: "1"
+                actionType:
+                  type: string
+                  enum: ["onoff", "increase", "decrease"]
+                  example: "onoff"
+              required:
+                - commandText
+                - feed
+                - payload
+      responses:
+        "201":
+          description: Thêm câu lệnh thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Thêm câu lệnh thành công!"
+                  command:
+                    type: object
+        "400":
+          description: Thiếu thông tin đầu vào
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Thiếu thông tin."
+        "500":
+          description: Lỗi server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Lỗi khi thêm câu lệnh."
+                  error:
+                    type: string
+
+  /voice_recognition_system/getCommands:
+    get:
+      summary: Lấy danh sách câu lệnh
+      description: Trả về danh sách các câu lệnh đã lưu trong hệ thống.
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Lấy danh sách câu lệnh thành công!"
+                  commands:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        commandText:
+                          type: string
+                        feed:
+                          type: string
+                        payload:
+                          type: string
+                        actionType:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+        "500":
+          description: Lỗi server khi lấy câu lệnh
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Lỗi khi lấy danh sách câu lệnh."
+                  error:
+                    type: string
+
+
+
+  /voice_recognition_system/start-recording:
+    post:
+      summary: Ghi âm và xử lý lệnh giọng nói
+      description: Gọi script Python để thu âm từ micro, xử lý đoạn văn bản (transcript), và thực hiện hành động tương ứng.
+      responses:
+        "200":
+          description: Ghi âm thành công và xử lý xong
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transcript:
+                    type: string
+                    example: "Bật đèn phòng khách"
+                  message:
+                    type: string
+                    example: "OK"
+        "500":
+          description: Lỗi khi xử lý transcript hoặc khi chạy script Python
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid JSON from Python"

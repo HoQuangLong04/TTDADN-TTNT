@@ -1,6 +1,9 @@
 text1,text2,label
 bật đèn, bật đèn,1
+cho đèn sáng, bật đèn,1 
+che đèn sáng, tắt đèn,0
 mở đèn, mở đèn,1
+cho đèn sáng, bật đèn,1
 mở đèn,bật đèn,1
 mở đèn,đèn sáng,1
 mở đèn, bật đèn lên,1
@@ -13,6 +16,9 @@ bật đèn,đèn lên đi,1
 bật đèn,tắt đèn,0
 tắt đèn,ngắt đèn,1
 tắt đèn,đèn tắt,1
+không cần đèn nữa, tắt đèn,1
+không cần đèn nữa, mở đèn,0
+không cần đèn nữa, bật đèn,0
 tắt đèn,mở đèn,0
 bật quạt,mở quạt,1
 bật quạt,quạt bật lên,1
@@ -28,8 +34,116 @@ cho quạt yếu lại, bật quạt,0
 cho quạt yếu lại, tắt quạt,0
 cho quạt mạnh lên, bật quạt,0
 cho quạt mạnh lên, tắt quạt,0
-giảm tốc độ quạt, cho quạt yếu lại,1
-tăng tốc độ quạt, cho quạt manh lên,1
+tăng tốc độ quạt, cho quạt mạnh lên,1
 giảm tốc độ quạt, tăng tốc độ quạt,0
+giảm tốc độ quạt, cho quạt yếu lại,1
 cho quạt yếu lại, giảm tốc độ quạt,1
 cho quạt yếu lại, bật đèn,0
+cho quạt yếu, giảm tốc độ quạt,1
+cho quạt mạnh, tăng tốc độ quạt,1
+cho quạt yếu, cho quạt mạnh,0
+tăng tốc, tăng tốc độ quạt,1
+tăng tốc, bật đèn,0
+tăng tốc, bật quạt,0
+giảm tốc, giảm tốc độ quạt,1
+cho quạt quay đi, bật quạt,1
+cho quạt quay đi, tắt quạt,0 
+cho quạt quay đi, tăng tốc độ quạt,0
+cho quạt quay đi, giảm tốc độ quạt,0
+dừng quạt lại, tắt quạt,1
+dừng quạt lại, bật quạt,0
+dừng quạt lại, tăng tốc độ quạt,0
+dừng quạt lại, giảm tốc độ quạt,0
+cho quạt quay, bật quạt,1 
+
+bật đèn,turn on the light,1
+tắt đèn,turn off the light,1
+bật quạt,turn on the fan,1
+tắt quạt,turn off the fan,1
+tăng tốc độ quạt,increase fan speed,1
+giảm tốc độ quạt,decrease fan speed,1
+bật đèn, turn on the fan,0
+tắt đèn, turn on the fan,0
+tắt đèn, turn off the fan,0
+turn on the light,bật đèn,1
+turn off the light,tắt đèn,1
+turn on the fan,bật quạt,1
+turn off the fan,tắt quạt,1
+increase fan speed,tăng tốc độ quạt,1
+decrease fan speed,giảm tốc độ quạt,1
+
+turn on the light,turn on the light,1
+cho đèn sáng,turn on the light,1
+che đèn sáng,turn off the light,0
+mở đèn,mở đèn,1
+cho đèn sáng,turn on the light,1
+mở đèn,turn on the light,1
+mở đèn,đèn sáng,1
+mở đèn,bật đèn lên,1
+mở đèn,đèn sáng lên,1
+mở đèn,cho tôi ánh sáng,1
+turn on the light,bật đèn lên,1
+turn on the light,mở đèn,1
+bật đèn lên,turn on the light,1
+turn on the light,đèn lên đi,1
+turn on the light,turn off the light,0
+turn off the light,ngắt đèn,1
+turn off the light,đèn tắt,1
+không cần đèn nữa,turn off the light,1
+không cần đèn nữa,mở đèn,0
+không cần đèn nữa,turn on the light,0
+turn off the light,mở đèn,0
+turn on the fan,mở quạt,1
+turn on the fan,quạt bật lên,1
+turn on the fan,quạt chạy,1
+turn on the fan,quạt quay,1
+mở quạt,turn on the fan,1
+turn off the fan,ngắt quạt,1
+turn off the fan,quạt dừng,1
+turn off the fan,turn on the fan,0
+mở đèn,turn on the fan,0
+turn off the light,turn off the fan,0
+cho quạt yếu lại,turn on the fan,0
+cho quạt yếu lại,turn off the fan,0
+cho quạt mạnh lên,turn on the fan,0
+cho quạt mạnh lên,turn off the fan,0
+increase fan speed,cho quạt mạnh lên,1
+decrease fan speed,increase fan speed,0
+decrease fan speed,cho quạt yếu lại,1
+cho quạt yếu lại,decrease fan speed,1
+cho quạt yếu lại,turn on the light,0
+cho quạt yếu,decrease fan speed,1
+cho quạt mạnh,increase fan speed,1
+cho quạt yếu,cho quạt mạnh,0
+tăng tốc,increase fan speed,1
+tăng tốc,turn on the light,0
+tăng tốc,turn on the fan,0
+giảm tốc,decrease fan speed,1
+cho quạt quay đi,turn on the fan,1
+cho quạt quay đi,turn off the fan,0
+cho quạt quay đi,increase fan speed,0
+cho quạt quay đi,decrease fan speed,0
+dừng quạt lại,turn off the fan,1
+dừng quạt lại,turn on the fan,0
+dừng quạt lại,increase fan speed,0
+dừng quạt lại,decrease fan speed,0
+cho quạt quay,turn on the fan,1
+bật đèn,turn on the light,1
+tắt đèn,turn off the light,1
+bật quạt,turn on the fan,1
+tắt quạt,turn off the fan,1
+tăng tốc độ quạt,increase fan speed,1
+giảm tốc độ quạt,decrease fan speed,1
+bật đèn,turn on the fan,0
+tắt đèn,turn on the fan,0
+tắt đèn,turn off the fan,0
+turn on the light,bật đèn,1
+turn off the light,tắt đèn,1
+turn on the fan,bật quạt,1
+turn off the fan,tắt quạt,1
+increase fan speed,tăng tốc độ quạt,1
+decrease fan speed,giảm tốc độ quạt,1
+
+
+
+rồi sau đấy, bật quạt,0
