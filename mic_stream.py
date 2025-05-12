@@ -15,6 +15,7 @@ with sr.Microphone() as source:
         print(json.dumps({"error": "Không nghe bạn nói gì."}))
         sys.exit(0)
 
+
 try:
     text = r.recognize_google(audio, language='vi-VN')
     print(json.dumps({"transcript": text}))
