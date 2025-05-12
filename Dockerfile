@@ -4,11 +4,11 @@ FROM node:18
 # Tạo thư mục app
 WORKDIR /app
 
-# Copy file khai báo gói
+# Copy package.json và package-lock.json
 COPY package*.json ./
 
 # Cài đặt dependencies
-RUN npm install
+RUN npm install || (echo "npm install failed" && cat /app/npm-debug.log && exit 1)
 
 # Copy toàn bộ mã nguồn vào container
 COPY . .
